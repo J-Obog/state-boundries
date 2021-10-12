@@ -1,7 +1,7 @@
 package api
 
-import "fmt"
+import "net/http"
 
-func SayHello() {
-	fmt.Println("Hi there!")
+func GetStateBorders(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("<h1>Hello!</h1>"))
 }
