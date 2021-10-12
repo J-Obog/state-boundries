@@ -13,13 +13,15 @@ func main() {
 	port := "80"
 	baseUri := fmt.Sprintf("%s:%s", host, port)
 
-	//create new router
+	//create and configure new router
 	router := mux.NewRouter()
+	router.Use(api.ReqLogger)
+	router.Use(api.MimeTypeRes)
 	
 	//handle request
 	router.HandleFunc("/api/borders/{state}", api.GetStateBorders).Methods("GET")
 	
 	//spin up server
-	fmt.Printf("Server running on port %s 🚀🚀🚀", port)
+	fmt.Printf("Server running on port %s 🚀🚀🚀\n", port)
 	http.ListenAndServe(baseUri, router)
 }
