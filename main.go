@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-	port := ":80"
+	host := "localhost"
+	port := "80"
+	baseUri := fmt.Sprintf("%s:%s", host, port)
 
 	//create new router
 	router := mux.NewRouter()
@@ -19,5 +21,5 @@ func main() {
 	
 	//spin up server
 	fmt.Printf("Server running on port %s 🚀🚀🚀", port)
-	http.ListenAndServe(port, router)
+	http.ListenAndServe(baseUri, router)
 }
