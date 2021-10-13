@@ -2,17 +2,26 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/J-Obog/state-boundries/api"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	host := "localhost"
-	port := "80"
-	baseUri := fmt.Sprintf("%s:%s", host, port)
+	err := godotenv.Load()
 
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	host := os.Getenv("HOST")
+	port := os.Getenv("PORT")
+	baseUri := fmt.Sprintf("%s:%s", host, port)
+	
 	//create and configure new router
 	router := mux.NewRouter()
 	router.Use(api.ReqLogger)
