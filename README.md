@@ -5,7 +5,7 @@ RESTful API written in Go for finding out which states border which.
 Utilizes the [gorilla/mux](https://pkg.go.dev/github.com/gorilla/mux) package for routing and a few built-in Go packages.
 
 ## Live Server
-This project has been deployed on Heroku. If you use visit (https://state-boundries.herokuapp.com/api/borders/)[https://state-boundries.herokuapp.com/api/borders/], it will `GET` the list of all 50 states and the states that they share a border with.
+This project has been deployed on Heroku. If you use visit [https://state-boundries.herokuapp.com/api/borders/](https://state-boundries.herokuapp.com/api/borders/), it will `GET` the list of all 50 states and the states that they share a border with.
 
 
 ## Installation & Testing locally
