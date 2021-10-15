@@ -2,26 +2,17 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/J-Obog/state-boundries/api"
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load()
-
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
-	host := os.Getenv("HOST")
+	//host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
-	baseUri := fmt.Sprintf("%s:%s", host, port)
-	
+
 	//create and configure new router
 	router := mux.NewRouter()
 	router.Use(api.ReqLogger)
@@ -33,5 +24,5 @@ func main() {
 
 	//spin up server
 	fmt.Printf("Server running on port %s 🚀🚀🚀\n", port)
-	http.ListenAndServe(baseUri, router)
+	http.ListenAndServe(":" + port, router)
 }
