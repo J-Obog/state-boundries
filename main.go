@@ -10,14 +10,13 @@ import (
 )
 
 func main() {
-	//host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
-
+	
 	//create and configure new router
 	router := mux.NewRouter()
 	router.Use(api.ReqLogger)
-	router.Use(api.MimeTypeRes)
-	
+	router.Use(api.CORS)
+
 	//handle request
 	router.HandleFunc("/api/borders/{state}", api.GetStateBorders).Methods("GET")
 	router.HandleFunc("/api/borders/", api.GetAllStateBorders).Methods("GET")
